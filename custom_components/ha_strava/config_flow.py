@@ -15,7 +15,6 @@ from homeassistant.helpers.network import get_url, NoURLAvailableError
 from homeassistant.helpers.entity_registry import (
     async_get_registry,
     async_entries_for_config_entry,
-    RegistryEntry,
     RegistryEntryDisabler,
 )
 
