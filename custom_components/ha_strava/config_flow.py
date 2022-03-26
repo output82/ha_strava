@@ -15,6 +15,7 @@ from homeassistant.helpers.network import get_url, NoURLAvailableError
 from homeassistant.helpers.entity_registry import (
     async_get_registry,
     async_entries_for_config_entry,
+    RegistryEntry,
     RegistryEntryDisabler,
 )
 
@@ -215,7 +216,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
                     ):
                         _LOGGER.debug(f"disabling entity {entity}")
                         _entity_registry.async_update_entity(
-                            entity.entity_id, disabled_by=RegistryEntryDisabler.INTEGRATION
+                            entity.entity_id, disabled_by=RegistryEntryDisabler.USER
                         )
                     else:
                         _entity_registry.async_update_entity(
@@ -228,7 +229,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
                         )
                     else:
                         _entity_registry.async_update_entity(
-                            entity_id=entity.entity_id, disabled_by=RegistryEntryDisabler.INTEGRATION
+                            entity_id=entity.entity_id, disabled_by=RegistryEntryDisabler.USER
                         )
 
             self._nb_activities = user_input[CONF_NB_ACTIVITIES]
